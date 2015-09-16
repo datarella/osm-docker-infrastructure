@@ -1,0 +1,9 @@
+#!/usr/bin/expect
+
+# send_user "$env(OSM_DATABASE_PORT_5432_TCP_ADDR)\n"
+# send_user "$env(OSM_DATABASE_ENV_POSTGRES_PASSWORD)\n"
+
+spawn osm2pgsql -s -l -d postgres -W -U postgres -H $env(OSM_DATABASE_PORT_5432_TCP_ADDR) -P 5432 --hstore $env(filename)
+expect "Password:" 
+send "$env(OSM_DATABASE_ENV_POSTGRES_PASSWORD)\n"
+interact

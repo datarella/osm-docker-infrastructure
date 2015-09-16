@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # download data
-#wget -P /raw_data/ https://s3.amazonaws.com/metro-extracts.mapzen.com/munich_germany.osm.bz2
-wget -P /raw_data/ https://s3.amazonaws.com/metro-extracts.mapzen.com/bruges_belgium.osm.bz2
+wget -P /raw_data/ https://s3.amazonaws.com/metro-extracts.mapzen.com/munich_germany.osm.bz2
+#wget -P /raw_data/ https://s3.amazonaws.com/metro-extracts.mapzen.com/bruges_belgium.osm.bz2
 
 # enter into raw_data directory
 cd /raw_data
@@ -10,7 +10,7 @@ cd /raw_data
 #locate the latest file
 # file example bruges_belgium.osm.bz2
 today=`date '+%Y_%m_%d'`
-latestfile=$(ls -rt | tail -1)
+latestfile=$(ls -t | tail -1)
 # parse full filename
 filebase="$(echo $latestfile | tr . '\n' | head -1)_$today"
 filesuffix=$(echo $latestfile | tr . '\n' | head -2 | tail -1)

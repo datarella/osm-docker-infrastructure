@@ -7,7 +7,7 @@ COPY load_data.exp .
 RUN mkdir raw_data \
 && apt-get -qq update \
 && apt-get install --yes wget bzip2 expect \
-&& chmod +x update_procedure.sh
+&& chmod +x /etc/cron.weekly/update_procedure
 
 
 # Install osm2pgsql, build from source

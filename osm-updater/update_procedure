@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # download data
-wget -P /raw_data/ https://s3.amazonaws.com/metro-extracts.mapzen.com/munich_germany.osm.bz2
-#wget -P /raw_data/ https://s3.amazonaws.com/metro-extracts.mapzen.com/bruges_belgium.osm.bz2
+#wget -P /raw_data/ https://s3.amazonaws.com/metro-extracts.mapzen.com/munich_germany.osm.bz2
+wget -P /raw_data/ https://s3.amazonaws.com/metro-extracts.mapzen.com/bruges_belgium.osm.bz2
 
 # enter into raw_data directory
 cd /raw_data

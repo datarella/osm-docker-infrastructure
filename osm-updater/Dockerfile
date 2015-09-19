@@ -1,6 +1,7 @@
 FROM ubuntu
 
-COPY update_procedure.sh .
+#schedule cron run-parts
+COPY update_procedure /etc/cron.weekly/
 COPY load_data.exp .
 
 RUN mkdir raw_data \
@@ -26,10 +27,7 @@ RUN cd osm2pgsql \
     && ./autogen.sh \
     && ./configure && make && make install
 
-#schedule cron
-RUN mv /update_procedure.sh /etc/cron.hourly/
-
 # Clean up
 RUN rm -rf /var/lib/apt/lists/*
 
-#CMD ["/bin/bash"]
+CMD ["cron", "-f"]

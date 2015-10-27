@@ -1,8 +1,8 @@
 # build osm-database and osm-updater images
-# docker build --no-cache=true -t osm-database ./osm-database
-# docker build --no-cache=true -t osm-updater ./osm-updater
-docker build -t osm-database ./osm-database
-docker build -t osm-updater ./osm-updater
+docker build --no-cache=true -t osm-database ./osm-database
+docker build --no-cache=true -t osm-updater ./osm-updater
+# docker build -t osm-database ./osm-database
+# docker build -t osm-updater ./osm-updater
 
 
 # create data directory at home directory of current user

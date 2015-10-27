@@ -1,8 +1,14 @@
 #!/bin/bash
 
 # download data
-#wget -P /raw_data/ https://s3.amazonaws.com/metro-extracts.mapzen.com/munich_germany.osm.bz2
-wget -P /raw_data/ https://s3.amazonaws.com/metro-extracts.mapzen.com/bruges_belgium.osm.bz2
+# munich dataset
+#wget -P -c /raw_data/ https://s3.amazonaws.com/metro-extracts.mapzen.com/munich_germany.osm.bz2
+
+# small dataset
+#wget -P -c /raw_data/ https://s3.amazonaws.com/metro-extracts.mapzen.com/bruges_belgium.osm.bz2
+
+# planet dataset
+wget -P -c http://planet.openstreetmap.org/planet/planet-latest.osm.bz2
 
 # enter into raw_data directory
 cd /raw_data

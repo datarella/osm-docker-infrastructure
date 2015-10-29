@@ -18,14 +18,18 @@ RUN apt-get install -y git-core
 RUN git clone git://github.com/openstreetmap/osm2pgsql.git
 
 
-RUN apt-get install -y autoconf automake libtool make g++ pkg-config libboost-dev \
-            libboost-system-dev libboost-filesystem-dev libboost-thread-dev libexpat1-dev \
-            libgeos-dev libgeos++-dev libpq-dev libbz2-dev libproj-dev zlib1g-dev \
-            protobuf-compiler libprotobuf-dev lua5.2 liblua5.2-dev
+RUN sudo apt-get install --yes make cmake g++ libboost-dev libboost-system-dev \
+    libboost-filesystem-dev libboost-thread-dev libexpat1-dev zlib1g-dev \
+    libbz2-dev libpq-dev libgeos-dev libgeos++-dev libproj-dev lua5.2 \
+    liblua5.2-dev
 
 RUN cd osm2pgsql \
-    && ./autogen.sh \
-    && ./configure && make && make install
+    && mkdir build \ 
+    && cd build \
+    && cmake .. \
+    && make \
+    && make install
+
 
 # Clean up
 RUN rm -rf /var/lib/apt/lists/*

@@ -2,8 +2,10 @@
 
 # send_user "$env(OSM_DATABASE_PORT_5432_TCP_ADDR)\n"
 # send_user "$env(OSM_DATABASE_ENV_POSTGRES_PASSWORD)\n"
+# osm2pgsql -s -l -d postgres -W -U postgres -H $OSM_DATABASE_PORT_5432_TCP_ADDR -P 5432 --hstore --style /osm2pgsql/default.style $filename
 
-spawn osm2pgsql -s -l -d postgres -W -U docker -H $env(OSM_DATABASE_PORT_5432_TCP_ADDR) -P 5432 --hstore $env(filename)
+
+spawn osm2pgsql -s -l -d postgres -W -U postgres -H $env(OSM_DATABASE_PORT_5432_TCP_ADDR) -P 5432 --hstore --style /osm2pgsql/default.style $env(filename)
 expect "Password:" 
 send "$env(OSM_DATABASE_ENV_POSTGRES_PASSWORD)\n"
 interact

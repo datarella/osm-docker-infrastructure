@@ -19,10 +19,8 @@ mkdir "$HOME/OSM_DATA_HOME/OSM_DATABASE_DATA_DIR"
 
 
 # start data-only containers
-# -v /var/lib/postgresql/data
-# docker run -d -v $OSM_DATABASE_DATA_DIR:/var/lib/postgresql/9.3/main -v /var/lib/postgresql/data --name osm-database-data osm-database
-docker run -d -v $OSM_DATABASE_DATA_DIR:/var/lib/postgresql/data --name osm-database-data osm-database
-docker run -d -v $RAW_DATA_DIR:/raw_data --name osm-raw-data osm-database
+docker run -d -v $OSM_DATABASE_DATA_DIR:/var/lib/postgresql/data --name osm-database-data busybox
+docker run -d -v $RAW_DATA_DIR:/raw_data --name osm-raw-data busybox
 
 # start postgres container
 docker run -d -e POSTGRES_PASSWORD=docker -p 25432:5432 --volumes-from osm-database-data --name osm-database osm-database

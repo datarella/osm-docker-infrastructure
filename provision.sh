@@ -1,8 +1,10 @@
+# reference: http://ryaneschinger.com/blog/dockerized-postgresql-development-environment/
+
 # build osm-database and osm-updater images
-docker build --no-cache=true -t osm-database ./osm-database
-docker build --no-cache=true -t osm-updater ./osm-updater
-# docker build -t osm-database ./osm-database
-# docker build -t osm-updater ./osm-updater
+# docker build --no-cache=true -t osm-database ./osm-database
+# docker build --no-cache=true -t osm-updater ./osm-updater
+docker build -t osm-database ./osm-database
+docker build -t osm-updater ./osm-updater
 
 
 # create data directory at home directory of current user
@@ -17,6 +19,8 @@ mkdir "$HOME/OSM_DATA_HOME/OSM_DATABASE_DATA_DIR"
 
 
 # start data-only containers
+# -v /var/lib/postgresql/data
+# docker run -d -v $OSM_DATABASE_DATA_DIR:/var/lib/postgresql/9.3/main -v /var/lib/postgresql/data --name osm-database-data osm-database
 docker run -d -v $OSM_DATABASE_DATA_DIR:/var/lib/postgresql/data --name osm-database-data osm-database
 docker run -d -v $RAW_DATA_DIR:/raw_data --name osm-raw-data osm-database
 

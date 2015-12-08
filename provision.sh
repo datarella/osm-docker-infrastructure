@@ -8,14 +8,16 @@ docker build -t osm-updater ./osm-updater
 
 
 # create data directory at home directory of current user
-mkdir "$HOME/OSM_DATA_HOME" 
+# mkdir "$HOME/OSM_DATA_HOME" 
+ROOT="/mnt/opdata1"
+mkdir "$ROOT/OSM_DATA_HOME" 
 
 # within OSM_DATA_HOME create RAW_DATA_DIR and OSM_DATABASE_DATA_DIR
-RAW_DATA_DIR="$HOME/OSM_DATA_HOME/RAW_DATA_DIR" 
-OSM_DATABASE_DATA_DIR="$HOME/OSM_DATA_HOME/OSM_DATABASE_DATA_DIR" 
+RAW_DATA_DIR="$ROOT/OSM_DATA_HOME/RAW_DATA_DIR" 
+OSM_DATABASE_DATA_DIR="$ROOT/OSM_DATA_HOME/OSM_DATABASE_DATA_DIR" 
 
-mkdir "$HOME/OSM_DATA_HOME/RAW_DATA_DIR" 
-mkdir "$HOME/OSM_DATA_HOME/OSM_DATABASE_DATA_DIR" 
+mkdir "$ROOT/OSM_DATA_HOME/RAW_DATA_DIR" 
+mkdir "$ROOT/OSM_DATA_HOME/OSM_DATABASE_DATA_DIR" 
 
 
 # start data-only containers
